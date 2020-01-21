@@ -98,25 +98,25 @@ type
     procedure MultiView1StartShowing(Sender: TObject);
     procedure MultiView1Hidden(Sender: TObject);
   private
-    { private éŒ¾ }
-    procedure SetNewGame; //V‹KƒQ[ƒ€ŠJnè‘±ŒÄ‚Ño‚µ‚Ì‚½‚ß‚ÌA‚Ù‚©è‘±‚«‚Ü‚Æ‚ß‚ÄŒÄ‚Ño‚µ
-    procedure SetInitTilePos; //ƒ^ƒCƒ‹ˆÊ’u‚Ì‰Šú®—ñ
-    procedure SetInvisibleTile;  //‰B‚µƒ^ƒCƒ‹Œˆ’è
-    procedure ShuffleTiles;       //ƒ^ƒCƒ‹ˆÊ’uƒVƒƒƒbƒtƒ‹
-    procedure ChangeBtnPlace(btnFirst: TButton; btnSecond: TButton); //ƒVƒƒƒbƒtƒ‹‚Éƒ{ƒ^ƒ“‚ÌˆÊ’u“ü‚ê‘Ö‚¦‚Ì‚½‚ß‚Ìè‘±‚«
+    { private å®£è¨€ }
+    procedure SetNewGame; //æ–°è¦ã‚²ãƒ¼ãƒ é–‹å§‹æ‰‹ç¶šå‘¼ã³å‡ºã—ã®ãŸã‚ã®ã€ã»ã‹æ‰‹ç¶šãã¾ã¨ã‚ã¦å‘¼ã³å‡ºã—
+    procedure SetInitTilePos; //ã‚¿ã‚¤ãƒ«ä½ç½®ã®åˆæœŸæ•´åˆ—
+    procedure SetInvisibleTile;  //éš ã—ã‚¿ã‚¤ãƒ«æ±ºå®š
+    procedure ShuffleTiles;       //ã‚¿ã‚¤ãƒ«ä½ç½®ã‚·ãƒ£ãƒƒãƒ•ãƒ«
+    procedure ChangeBtnPlace(btnFirst: TButton; btnSecond: TButton); //ã‚·ãƒ£ãƒƒãƒ•ãƒ«æ™‚ã«ãƒœã‚¿ãƒ³ã®ä½ç½®å…¥ã‚Œæ›¿ãˆã®ãŸã‚ã®æ‰‹ç¶šã
 
-    procedure btnPushed(btn: TButton);     //ƒ^ƒCƒ‹‚ªƒNƒŠƒbƒN‚³‚ê‚½‚½‚çƒ|ƒWƒVƒ‡ƒ“ƒ`ƒFƒbƒN‚ğŒÄ‚Ño‚·‚½‚ß‚Ìè‘±‚«
-    procedure NextPosChk(btn: TButton);     //‰¡‚ªŒ©‚¦‚È‚¢ƒ^ƒCƒ‹‚©ƒ`ƒFƒbƒN
-    procedure ButtonAni(btn: TButton; PName: string; StpValue: Single);   //ƒ^ƒCƒ‹ˆÚ“®ƒAƒjƒ‚Ìè‘±‚«
-    function CheckFin: Boolean;     //ƒ^ƒCƒ‹‚È‚ç‚×‚ªŠ®¬‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN
-    procedure CompleteSet;           //Š®¬‚µ‚½ê‡‚Ìˆ—
+    procedure btnPushed(btn: TButton);     //ã‚¿ã‚¤ãƒ«ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸãŸã‚‰ãƒã‚¸ã‚·ãƒ§ãƒ³ãƒã‚§ãƒƒã‚¯ã‚’å‘¼ã³å‡ºã™ãŸã‚ã®æ‰‹ç¶šã
+    procedure NextPosChk(btn: TButton);     //æ¨ªãŒè¦‹ãˆãªã„ã‚¿ã‚¤ãƒ«ã‹ãƒã‚§ãƒƒã‚¯
+    procedure ButtonAni(btn: TButton; PName: string; StpValue: Single);   //ã‚¿ã‚¤ãƒ«ç§»å‹•ã‚¢ãƒ‹ãƒ¡ã®æ‰‹ç¶šã
+    function CheckFin: Boolean;     //ã‚¿ã‚¤ãƒ«ãªã‚‰ã¹ãŒå®Œæˆã—ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯
+    procedure CompleteSet;           //å®Œæˆã—ãŸå ´åˆã®å‡¦ç†
 
-    procedure SetTileRect;    //ƒ^ƒCƒ‹•\¦•û–@‚ÌØ‚è‘Ö‚¦i³•ûŒ`‚©ƒtƒBƒbƒg‚©j
-    function FindTagBtn(tag: Integer): TButton;     //ƒ{ƒ^ƒ“‚Ì‚Á‚Ä‚¢‚éƒ^ƒOî•ñ‚©‚ç‘ÎÛ‚Ìƒ{ƒ^ƒ“ƒIƒuƒWƒFƒNƒgŒ©‚Â‚¯‚é
-    function GetTilePosition(tag: Integer): TmyPosition;     //ƒ^ƒOî•ñ‚©‚çƒ{ƒ^ƒ“‚ÌÀ•Wî•ñ‚ğŒ©‚Â‚¯‚é
+    procedure SetTileRect;    //ã‚¿ã‚¤ãƒ«è¡¨ç¤ºæ–¹æ³•ã®åˆ‡ã‚Šæ›¿ãˆï¼ˆæ­£æ–¹å½¢ã‹ãƒ•ã‚£ãƒƒãƒˆã‹ï¼‰
+    function FindTagBtn(tag: Integer): TButton;     //ãƒœã‚¿ãƒ³ã®æŒã£ã¦ã„ã‚‹ã‚¿ã‚°æƒ…å ±ã‹ã‚‰å¯¾è±¡ã®ãƒœã‚¿ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè¦‹ã¤ã‘ã‚‹
+    function GetTilePosition(tag: Integer): TmyPosition;     //ã‚¿ã‚°æƒ…å ±ã‹ã‚‰ãƒœã‚¿ãƒ³ã®åº§æ¨™æƒ…å ±ã‚’è¦‹ã¤ã‘ã‚‹
 
   public
-    { public éŒ¾ }
+    { public å®£è¨€ }
   end;
 
 var
@@ -126,36 +126,41 @@ implementation
 
 {$R *.fmx}
 
-uses TilesVersionUnit2;@//ƒGƒ“ƒoƒJƒfƒ@ƒƒSƒtƒH[ƒ€ŒÄ‚Ño‚·‚½‚ß‚ÌUses
+uses TilesVersionUnit2;ã€€//ã‚¨ãƒ³ãƒã‚«ãƒ‡ãƒ­ã€€ãƒ­ã‚´ãƒ•ã‚©ãƒ¼ãƒ å‘¼ã³å‡ºã™ãŸã‚ã®Uses
 
-var     //ƒOƒ[ƒoƒ‹•Ï”
-  btnMoving, btnInvisibleTile: TButton;   //“®‚¢‚Ä‚¢‚éƒ{ƒ^ƒ“AÁ‚µ‚Ä‚¢‚éƒ{ƒ^ƒ“‚ğŠo‚¦‚Æ‚­
-  iNumOfBtn: Integer;      //ƒ^ƒCƒ‹”‚ğŠo‚¦‚Ä‚¨‚­
-  FComp: Boolean;          //Š®¬‚µ‚Ä‚¢‚é‚©ƒtƒ‰ƒO
+var     //ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°
+  btnMoving, btnInvisibleTile: TButton;   //å‹•ã„ã¦ã„ã‚‹ãƒœã‚¿ãƒ³ã€æ¶ˆã—ã¦ã„ã‚‹ãƒœã‚¿ãƒ³ã‚’è¦šãˆã¨ã
+  iNumOfBtn: Integer;      //ã‚¿ã‚¤ãƒ«æ•°ã‚’è¦šãˆã¦ãŠã
+  FComp: Boolean;          //å®Œæˆã—ã¦ã„ã‚‹ã‹ãƒ•ãƒ©ã‚°
   slpx, slpy: Single;
 
 procedure TForm1.btnGotoSettingClick(Sender: TObject);
 begin
-//İ’è‰æ–Ê‚Ö‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚çƒXƒ‰ƒCƒh
+//è¨­å®šç”»é¢ã¸ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‚‰
+  // NewGameãƒœã‚¿ãƒ³ãƒ”ã‚«ãƒ”ã‚«ã•ã›ã‚‹
+  GlowEffectNewGame.Enabled := True;
+  GlowEffectGotoSetting.Enabled := True;
+
+  // è¨­å®šç”»é¢ã«ã‚¹ãƒ©ã‚¤ãƒ‰ã™ã‚‹
   TabControlSetting.SetActiveTabWithTransition(Setting, TTabTransition.Slide,
     TTabTransitionDirection.Reversed);
 end;
 
 procedure TForm1.btnGotoTileClick(Sender: TObject);
 begin
-//ƒ^ƒCƒ‹‰æ–Ê‚Ö‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚çƒXƒ‰ƒCƒh
+//ã‚¿ã‚¤ãƒ«ç”»é¢ã¸ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‚‰ã‚¹ãƒ©ã‚¤ãƒ‰
   TabControlSetting.SetActiveTabWithTransition(Tile, TTabTransition.Slide,
     TTabTransitionDirection.Normal);
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
-//ƒ^ƒCƒ‹‚ª‰Ÿ‚³‚ê‚½ƒCƒxƒ“ƒg‚«‚½‚çAƒ{ƒ^ƒ“î•ñ‚Æ‚Æ‚à‚Éƒ{ƒ^ƒ“‰Ÿ‚³‚ê‚½‚ç‚Ì“ˆêˆ—‚Ö‘—‚é
+//ã‚¿ã‚¤ãƒ«ãŒæŠ¼ã•ã‚ŒãŸã‚¤ãƒ™ãƒ³ãƒˆããŸã‚‰ã€ãƒœã‚¿ãƒ³æƒ…å ±ã¨ã¨ã‚‚ã«ãƒœã‚¿ãƒ³æŠ¼ã•ã‚ŒãŸã‚‰ã®çµ±ä¸€å‡¦ç†ã¸é€ã‚‹
 begin
   btnPushed(TButton(Sender));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
-//ˆÈ‰º“¯•¶
+//ä»¥ä¸‹åŒæ–‡
 begin
   btnPushed(TButton(Sender));
 end;
@@ -197,20 +202,20 @@ end;
 
 procedure TForm1.cbTileRectChange(Sender: TObject);
 begin
-//ƒ^ƒCƒ‹‚Ì•\¦•û–@ƒRƒ“ƒ{‚ª•ÏX‚³‚ê‚½‚Æ‚«‚ÌƒCƒxƒ“ƒg
+//ã‚¿ã‚¤ãƒ«ã®è¡¨ç¤ºæ–¹æ³•ã‚³ãƒ³ãƒœãŒå¤‰æ›´ã•ã‚ŒãŸã¨ãã®ã‚¤ãƒ™ãƒ³ãƒˆ
   SetTileRect;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-//ƒtƒH[ƒ€ƒNƒŠƒGƒCƒg‚Ì‰Šúİ’è
+//ãƒ•ã‚©ãƒ¼ãƒ ã‚¯ãƒªã‚¨ã‚¤ãƒˆæ™‚ã®åˆæœŸè¨­å®š
   TabControlSetting.ActiveTab := Setting;
   Tile.Enabled := False;
   btnGotoTile.Enabled := False;
 end;
 
 function TForm1.GetTilePosition(tag: Integer): TmyPosition;
-//ƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒOî•ñ‚©‚çƒ^ƒCƒ‹ˆÊ’u‚ğŠ„‚èo‚·
+//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¿ã‚°æƒ…å ±ã‹ã‚‰ã‚¿ã‚¤ãƒ«ä½ç½®ã‚’å‰²ã‚Šå‡ºã™
 var
   iLine: Integer;
   myPos: TmyPosition;
@@ -218,11 +223,11 @@ var
 begin
   myPos.X := -1;
   myPos.Y := -1;
-  // ”ÍˆÍŠO‚È‚ç -1   •Ô‚µ‚Æ‚­
+  // ç¯„å›²å¤–ãªã‚‰ -1   è¿”ã—ã¨ã
   if (tag <= 0) or (tag > iNumOfBtn) then
     Exit(myPos);
 
-  // ˆê—ñ‚Ì”‚ğŠ„‚èo‚·
+  // ä¸€åˆ—ã®æ•°ã‚’å‰²ã‚Šå‡ºã™
   iCount := 1;
   iLine := round(sqrt(iNumOfBtn));
 
@@ -244,7 +249,7 @@ end;
 
 procedure TForm1.ListBoxGroupFooter1Click(Sender: TObject);
 begin
-//ƒGƒ“ƒoƒJƒfƒƒƒS•\¦
+//ã‚¨ãƒ³ãƒã‚«ãƒ‡ãƒ­ãƒ­ã‚´è¡¨ç¤º
   Form2.Height := Form1.Height;
   Form2.Width := Form1.Width;
   Form2.Top := Form1.Top + 50;
@@ -254,13 +259,13 @@ end;
 
 procedure TForm1.MultiView1Hidden(Sender: TObject);
 begin
-//ƒ}ƒ‹ƒ`ƒrƒ…[‚ª‰B‚ê‚é‚Æ‚«Aİ’èƒŠƒXƒg‚ğ‚à‚Æ‚Ìİ’èƒ^ƒu‚Ì•Ô‚·
+//ãƒãƒ«ãƒãƒ“ãƒ¥ãƒ¼ãŒéš ã‚Œã‚‹ã¨ãã€è¨­å®šãƒªã‚¹ãƒˆã‚’ã‚‚ã¨ã®è¨­å®šã‚¿ãƒ–ã®è¿”ã™
   setting.AddObject(lbSetting);
 end;
 
 procedure TForm1.MultiView1StartShowing(Sender: TObject);
 begin
-// Multi View‚ªŒ»‚ê‚é‚Æ‚«Aİ’èƒŠƒXƒg‚ğƒ}ƒ‹ƒ`ƒrƒ…[‚Éæ‚¹Š·‚¦‚é
+// Multi ViewãŒç¾ã‚Œã‚‹ã¨ãã€è¨­å®šãƒªã‚¹ãƒˆã‚’ãƒãƒ«ãƒãƒ“ãƒ¥ãƒ¼ã«ä¹—ã›æ›ãˆã‚‹
  if lbSetting = nil then
  begin
    lbSetting.Create(self);
@@ -271,11 +276,11 @@ end;
 
 procedure TForm1.ButtonAni(btn: TButton; PName: string; StpValue: Single);
 begin
-  // ƒ{ƒ^ƒ“‚ÌˆÚ“®‚ÌƒAƒjƒ[ƒVƒ‡ƒ“İ’è
+  // ãƒœã‚¿ãƒ³ã®ç§»å‹•ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®š
   slpx := btn.Position.X;
-  slpy := btn.Position.Y; // ƒ{ƒ^ƒ“‚Ìˆê‹L‰¯
+  slpy := btn.Position.Y; // ãƒœã‚¿ãƒ³ã®ä¸€æ™‚è¨˜æ†¶
   btnMoving := btn;
-  btn.AddObject(TFmxObject(FlButtonAnimation)); // ƒAƒjƒ[ƒVƒ‡ƒ“‚ğƒAƒ^ƒbƒ`
+  btn.AddObject(TFmxObject(FlButtonAnimation)); // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ã‚¢ã‚¿ãƒƒãƒ
   FlButtonAnimation.PropertyName := PName;
   FlButtonAnimation.StopValue := StpValue;
   if SpinBox1.Value <> 0 then
@@ -289,33 +294,33 @@ end;
 
 
 procedure TForm1.ChangeBtnPlace(btnFirst, btnSecond: TButton);
-//‰Šúƒ{ƒ^ƒ“”z—ñ‚Ì‚½‚ß‚Ìƒ{ƒ^ƒ“ƒVƒƒƒbƒtƒ‹—p
+//åˆæœŸãƒœã‚¿ãƒ³é…åˆ—ã®ãŸã‚ã®ãƒœã‚¿ãƒ³ã‚·ãƒ£ãƒƒãƒ•ãƒ«ç”¨
 var
   posTemp: TmyPosition;
   iTag: Integer;
 begin
-  // First‚ÌêŠ‚ğˆê‹L‰¯
+  // Firstã®å ´æ‰€ã‚’ä¸€æ™‚è¨˜æ†¶
   posTemp.X := btnFirst.Position.X;
   posTemp.Y := btnFirst.Position.Y;
   iTag := btnFirst.tag;
 
-  // first‚ğSecond‚ÌêŠ‚ÉˆÚ“®
+  // firstã‚’Secondã®å ´æ‰€ã«ç§»å‹•
   btnFirst.Position.X := btnSecond.Position.X;
   btnFirst.Position.Y := btnSecond.Position.Y;
   btnFirst.tag := btnSecond.tag;
 
-  // Secound ‚ğ Œ³First‚Î‚µ‚å‚Ö
+  // Secound ã‚’ å…ƒFirstã°ã—ã‚‡ã¸
   btnSecond.Position.X := posTemp.X;
   btnSecond.Position.Y := posTemp.Y;
   btnSecond.tag := iTag;
 end;
 
 function TForm1.CheckFin: Boolean;
-//ƒ{ƒ^ƒ“‚ÌƒAƒjƒI—¹Œã‚ÉŒÄ‚Î‚ê‚é—\’è‚ÌAƒQ[ƒ€Š®¬ƒ`ƒFƒbƒN
+//ãƒœã‚¿ãƒ³ã®ã‚¢ãƒ‹ãƒ¡çµ‚äº†å¾Œã«å‘¼ã°ã‚Œã‚‹äºˆå®šã®ã€ã‚²ãƒ¼ãƒ å®Œæˆãƒã‚§ãƒƒã‚¯
 var
   I: Integer;
 begin
-  // tag ‚Ì”’l‚Æƒ{ƒ^ƒ“‚Ì”’l‚ª‘S•”‚»‚ë‚Á‚Ä‚ê‚ÎŠ®¬I
+  // tag ã®æ•°å€¤ã¨ãƒœã‚¿ãƒ³ã®æ•°å€¤ãŒå…¨éƒ¨ãã‚ã£ã¦ã‚Œã°å®Œæˆï¼
   for I := 0 to ScaledLayout1.Children.Count - 1 do
   begin
     if (ScaledLayout1.Children.Items[I] is TButton) then
@@ -331,66 +336,66 @@ end;
 
 procedure TForm1.CompleteSet;
 begin
-  // ƒQ[ƒ€’B¬ˆ—
-  btnInvisibleTile.Opacity := 0; // Œ©‚¦‚È‚­‚µ‚Ä‚¨‚­
+  // ã‚²ãƒ¼ãƒ é”æˆå‡¦ç†
+  btnInvisibleTile.Opacity := 0; // è¦‹ãˆãªãã—ã¦ãŠã
   btnInvisibleTile.Visible := True;
   btnInvisibleTile.SetFocus;
-  btnInvisibleTile.AddObject(TFmxObject(FlButtonAnimation)); // ƒAƒjƒ[ƒVƒ‡ƒ“‚ğƒAƒ^ƒbƒ`
+  btnInvisibleTile.AddObject(TFmxObject(FlButtonAnimation)); // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ã‚¢ã‚¿ãƒƒãƒ
   FlButtonAnimation.PropertyName := 'Opacity';
   FlButtonAnimation.StopValue := 0.9;
-  FlButtonAnimation.Duration := 1; // ÅŒã‚Ìƒ^ƒCƒ‹oŒ»Š—vŠÔ
+  FlButtonAnimation.Duration := 1; // æœ€å¾Œã®ã‚¿ã‚¤ãƒ«å‡ºç¾æ‰€è¦æ™‚é–“
   FlButtonAnimation.Start;
   FComp := True;
 
-  // NewGameƒ{ƒ^ƒ“ƒsƒJƒsƒJ‚³‚¹‚é
+  // NewGameãƒœã‚¿ãƒ³ãƒ”ã‚«ãƒ”ã‚«ã•ã›ã‚‹
   GlowEffectNewGame.Enabled := True;
   FloatAnimationNewGame.Start;
 
-  // İ’ès‚«ƒ{ƒ^ƒ“ƒsƒJƒsƒJ‚³‚¹‚é
+  // è¨­å®šè¡Œããƒœã‚¿ãƒ³ãƒ”ã‚«ãƒ”ã‚«ã•ã›ã‚‹
   GlowEffectGotoSetting.Enabled := True;
   FloatAnimationGotoSetting.Start;
 
-  // ƒ^ƒCƒ‹ƒsƒJ-‚³‚¹‚é
+  // ã‚¿ã‚¤ãƒ«ãƒ”ã‚«-ã•ã›ã‚‹
   FloatAnimationTileGrow.StartValue := 0;
   GlowEffectTile.Enabled := True;
   FloatAnimationTileGrow.Start;
 end;
 
 function TForm1.FindTagBtn(tag: Integer): TButton;
-//ƒ{ƒ^ƒ“‚Ì‚Á‚Ä‚éƒ^ƒOî•ñ‚©‚ç©•ª‚ÌˆÊ’u‚ğŠ„‚èo‚·
+//ãƒœã‚¿ãƒ³ã®æŒã£ã¦ã‚‹ã‚¿ã‚°æƒ…å ±ã‹ã‚‰è‡ªåˆ†ã®ä½ç½®ã‚’å‰²ã‚Šå‡ºã™
 var
   I: Integer;
 begin
-  // ˆø”‚ªƒ{ƒ^ƒ“‚Ì”ÍˆÍŠO‚¾‚Á‚½‚çnil
+  // å¼•æ•°ãŒãƒœã‚¿ãƒ³ã®ç¯„å›²å¤–ã ã£ãŸã‚‰nil
   if (tag <= 0) or (tag > iNumOfBtn) then
     Exit(nil);
-  // ƒXƒP[ƒ‹ƒŒƒCƒAƒEƒg“à‚Ìq‹Ÿ‚Ì”‚¾‚¯‰ñ‚·
+  // ã‚¹ã‚±ãƒ¼ãƒ«ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆå†…ã®å­ä¾›ã®æ•°ã ã‘å›ã™
   for I := 0 to ScaledLayout1.Children.Count - 1 do
   begin
-    if (ScaledLayout1.Children.Items[I] is TButton) then // ƒ{ƒ^ƒ“‚È‚ç
+    if (ScaledLayout1.Children.Items[I] is TButton) then // ãƒœã‚¿ãƒ³ãªã‚‰
     begin
       if TButton(ScaledLayout1.Children.Items[I]).tag = tag then
         Exit(TButton(ScaledLayout1.Children.Items[I]));
     end;
   end;
-  // ‚±‚±‚Ü‚Å‚«‚ÄŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚ç¸”s
+  // ã“ã“ã¾ã§ãã¦è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸã‚‰å¤±æ•—
   Result := nil;
 end;
 
 procedure TForm1.FlButtonAnimationFinish(Sender: TObject);
-//ƒ{ƒ^ƒ“ˆÚ“®‚ÌƒAƒjƒ[ƒVƒ‡ƒ“Š®—¹Œã‚Ìˆ—
+//ãƒœã‚¿ãƒ³ç§»å‹•ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å®Œäº†å¾Œã®å‡¦ç†
 var
   iTmpTag: Integer;
 begin
-  // ˆÚ“®Œã‚Ìƒ{ƒ^ƒ“—LŒø‰»‚ÆAƒCƒ“ƒrƒVƒuƒ‹ƒ^ƒCƒ‹‚ÌˆÚ“®
+  // ç§»å‹•å¾Œã®ãƒœã‚¿ãƒ³æœ‰åŠ¹åŒ–ã¨ã€ã‚¤ãƒ³ãƒ“ã‚·ãƒ–ãƒ«ã‚¿ã‚¤ãƒ«ã®ç§»å‹•
   if (not FComp) then
   begin
     btnMoving.Enabled := True;
-    // ˆÚ“®‚ª³‚µ‚­‚Å‚«‚½‚©ƒ`ƒFƒbƒNiƒCƒ“ƒrƒW‚ÌˆÊ’u‚Ü‚Å“®‚¢‚½‚©)
+    // ç§»å‹•ãŒæ­£ã—ãã§ããŸã‹ãƒã‚§ãƒƒã‚¯ï¼ˆã‚¤ãƒ³ãƒ“ã‚¸ã®ä½ç½®ã¾ã§å‹•ã„ãŸã‹)
     if (btnMoving.Position.X = btnInvisibleTile.Position.X) and
       (btnMoving.Position.Y = btnInvisibleTile.Position.Y) then
     begin
-      // ƒCƒ“ƒrƒWƒ^ƒCƒ‹‚ÌˆÚ“®
+      // ã‚¤ãƒ³ãƒ“ã‚¸ã‚¿ã‚¤ãƒ«ã®ç§»å‹•
       iTmpTag := btnMoving.tag;
       btnInvisibleTile.Position.X := slpx;
       btnInvisibleTile.Position.Y := slpy;
@@ -399,107 +404,107 @@ begin
     end;
 
   end;
-  // ƒRƒ“ƒvƒŠ[ƒgƒ`ƒFƒbƒN
+  // ã‚³ãƒ³ãƒ—ãƒªãƒ¼ãƒˆãƒã‚§ãƒƒã‚¯
   if CheckFin and (not FComp) then
     CompleteSet;
 end;
 
 procedure TForm1.NextPosChk(btn: TButton);
-//ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«AƒCƒ“ƒrƒWƒ^ƒCƒ‹‚ª‰¡‚É‚¢‚é‚©ƒ`ƒFƒbƒN‚µ‚Ä“®‚©‚·
+//ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã¨ãã€ã‚¤ãƒ³ãƒ“ã‚¸ã‚¿ã‚¤ãƒ«ãŒæ¨ªã«ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã—ã¦å‹•ã‹ã™
 var
   posTemp, myPos, InvPos: TmyPosition;
 begin
-  // ‹ó‚«ƒ^ƒCƒ‹‚Æ‚Ì·‚ğ‹‚ß‚é
+  // ç©ºãã‚¿ã‚¤ãƒ«ã¨ã®å·®ã‚’æ±‚ã‚ã‚‹
   myPos := GetTilePosition(btn.tag);
   InvPos := GetTilePosition(btnInvisibleTile.tag);
 
   posTemp.X := myPos.X - InvPos.X;
   posTemp.Y := myPos.Y - InvPos.Y;
-  // X—ñ‚Ì“¯ˆê«ƒ`ƒFƒbƒN& ‚™—ñ‚ª—×‚©
+  // Xåˆ—ã®åŒä¸€æ€§ãƒã‚§ãƒƒã‚¯& ï½™åˆ—ãŒéš£ã‹
   if (posTemp.X = 0) and (posTemp.Y >= -1) and (posTemp.Y <= 1) then
   begin
-    // —×‚È‚çƒ{ƒ^ƒ“ˆÚ“®ƒAƒjƒ
+    // éš£ãªã‚‰ãƒœã‚¿ãƒ³ç§»å‹•ã‚¢ãƒ‹ãƒ¡
     ButtonAni(btn, 'Position.Y', btnInvisibleTile.Position.Y);
   end;
-  // y—ñ‚Ì“¯ˆê«ƒ`ƒFƒbƒN& ‚™—ñ‚ª—×‚©
+  // yåˆ—ã®åŒä¸€æ€§ãƒã‚§ãƒƒã‚¯& ï½™åˆ—ãŒéš£ã‹
   if (posTemp.Y = 0) and (posTemp.X >= -1) and (posTemp.X <= 1) then
   begin
-    // —×‚È‚çƒ{ƒ^ƒ“ˆÚ“®ƒAƒjƒ
+    // éš£ãªã‚‰ãƒœã‚¿ãƒ³ç§»å‹•ã‚¢ãƒ‹ãƒ¡
     ButtonAni(btn, 'Position.X', btnInvisibleTile.Position.X);
   end;
 end;
 
 procedure TForm1.NextTabAction1Update(Sender: TObject);
-//ƒWƒFƒXƒ`ƒƒ[‚ÅŒÄ‚Ño‚³‚ê‚éƒAƒNƒVƒ‡ƒ“
+//ã‚¸ã‚§ã‚¹ãƒãƒ£ãƒ¼ã§å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 begin
-  // ƒWƒFƒXƒ`ƒƒ[‚Å‰E‚©‚ç¶Bƒ^ƒCƒ‹‰æ–ÊŒÄ‚Ño‚µ
+  // ã‚¸ã‚§ã‚¹ãƒãƒ£ãƒ¼ã§å³ã‹ã‚‰å·¦ã€‚ã‚¿ã‚¤ãƒ«ç”»é¢å‘¼ã³å‡ºã—
   if (btnGotoTile.Enabled = True) and (TabControlSetting.TabIndex = 0) then
     TabControlSetting.SetActiveTabWithTransition(Tile, TTabTransition.Slide,
       TTabTransitionDirection.Normal);
 end;
 
 procedure TForm1.PreviousTabAction1Update(Sender: TObject);
-//ƒWƒFƒXƒ`ƒƒ[‚ÅŒÄ‚Ño‚³‚ê‚éƒAƒNƒVƒ‡ƒ“
+//ã‚¸ã‚§ã‚¹ãƒãƒ£ãƒ¼ã§å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³
 begin
-  // ƒWƒFƒXƒ`ƒƒ[‚Å¶‚©‚ç‰EBİ’è‰æ–ÊŒÄ‚Ño‚µ
+  // ã‚¸ã‚§ã‚¹ãƒãƒ£ãƒ¼ã§å·¦ã‹ã‚‰å³ã€‚è¨­å®šç”»é¢å‘¼ã³å‡ºã—
   if (btnGotoSetting.Enabled = True) and (TabControlSetting.TabIndex = 1) then
     TabControlSetting.SetActiveTabWithTransition(Setting, TTabTransition.Slide,
       TTabTransitionDirection.Reversed);
 end;
 
 procedure TForm1.SetInitTilePos;
-//ƒ{ƒ^ƒ“‚ÌˆÊ’u‚Ì‰Šúİ’è‚Æƒ{ƒ^ƒ“ˆÊ’u‚ğŠ„‚èo‚µ‚â‚·‚­‚·‚é‚½‚ß‚Ìƒ^ƒOİ’è
+//ãƒœã‚¿ãƒ³ã®ä½ç½®ã®åˆæœŸè¨­å®šã¨ãƒœã‚¿ãƒ³ä½ç½®ã‚’å‰²ã‚Šå‡ºã—ã‚„ã™ãã™ã‚‹ãŸã‚ã®ã‚¿ã‚°è¨­å®š
 var
   I: Integer;
   iTile: Integer;
   Pos: TmyPosition;
   iNum: Integer;
 begin
-  // Á‚¦‚½ƒ{ƒ^ƒ“î•ñƒNƒŠƒA
-  // ƒ^ƒCƒ‹‚ğ‚«‚ê‚¢‚É‚È‚ç‚×‚È‚¨‚·
+  // æ¶ˆãˆãŸãƒœã‚¿ãƒ³æƒ…å ±ã‚¯ãƒªã‚¢
+  // ã‚¿ã‚¤ãƒ«ã‚’ãã‚Œã„ã«ãªã‚‰ã¹ãªãŠã™
   iNumOfBtn := 0;
 
-  // ƒ{ƒ^ƒ“‚Ì”‚ğæ“¾
+  // ãƒœã‚¿ãƒ³ã®æ•°ã‚’å–å¾—
   for I := 0 to ScaledLayout1.Children.Count - 1 do
   begin
     if ScaledLayout1.Children.Items[I] is TButton then
       iNumOfBtn := iNumOfBtn + 1;
   end;
 
-  // ˆê—ñ‚Ì”‚ğŠ„‚èo‚·
+  // ä¸€åˆ—ã®æ•°ã‚’å‰²ã‚Šå‡ºã™
   iTile := round(sqrt(iNumOfBtn));
 
-  // ƒ{ƒ^ƒ“‚ÌˆÊ’u‚ğŠm”F‚·‚é‚½‚ß‚Ì”äŠrPosition
+  // ãƒœã‚¿ãƒ³ã®ä½ç½®ã‚’ç¢ºèªã™ã‚‹ãŸã‚ã®æ¯”è¼ƒPosition
   Pos.X := 0;
   Pos.Y := 0;
 
-  // q‹Ÿ‚ğ‚æ‚Ñ‚¾‚·‚ÆŠî–{A‡˜—Ç‚­ŒÄ‚Ño‚·
+  // å­ä¾›ã‚’ã‚ˆã³ã ã™ã¨åŸºæœ¬ã€é †åºè‰¯ãå‘¼ã³å‡ºã™
   iNum := 1;
   for I := 0 to ScaledLayout1.Children.Count - 1 do
   begin
-    // ƒ{ƒ^ƒ“‚È‚ç
+    // ãƒœã‚¿ãƒ³ãªã‚‰
     if (ScaledLayout1.Children.Items[I] is TButton) then
     begin
-      // ˆÊ’uİ’è
+      // ä½ç½®è¨­å®š
       TButton(ScaledLayout1.Children.Items[I]).Position.X := Pos.X;
       TButton(ScaledLayout1.Children.Items[I]).Position.Y := Pos.Y;
       //
       TButton(ScaledLayout1.Children.Items[I]).Enabled := True;
       TButton(ScaledLayout1.Children.Items[I]).Visible := True;
-      // ‰Â‹‰»
+      // å¯è¦–åŒ–
       TButton(ScaledLayout1.Children.Items[I]).Opacity := 0.7;
-      // ˆÊ’uî•ñ‚Æ‚µ‚Ä‚Ìƒ^ƒOƒf[ƒ^‚ğİ’è
+      // ä½ç½®æƒ…å ±ã¨ã—ã¦ã®ã‚¿ã‚°ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®š
       TButton(ScaledLayout1.Children.Items[I]).Text := iNum.ToString;
       TButton(ScaledLayout1.Children.Items[I]).tag := iNum;
 
       iNum := iNum + 1;
     end;
-    if Pos.X < (iTile * 100 - 100) then // ˆê—ñ‚ÌƒTƒCƒYŠm”F
+    if Pos.X < (iTile * 100 - 100) then // ä¸€åˆ—ã®ã‚µã‚¤ã‚ºç¢ºèª
     begin
-      Pos.X := Pos.X + 100; // —ñ“à‚È‚çX—ñ‘‚â‚·
+      Pos.X := Pos.X + 100; // åˆ—å†…ãªã‚‰Xåˆ—å¢—ã‚„ã™
     end
     else
-    begin // ˆê—ñ‚¤‚ß‚½‚çæ“ª‚É–ß‚èA‚Q—ñ–Ú
+    begin // ä¸€åˆ—ã†ã‚ãŸã‚‰å…ˆé ­ã«æˆ»ã‚Šã€ï¼’åˆ—ç›®
       Pos.X := 0;
       Pos.Y := Pos.Y + 100;
     end;
@@ -507,16 +512,16 @@ begin
 end;
 
 procedure TForm1.SetInvisibleTile;
-//‘Sƒ^ƒCƒ‹‚©‚çƒ‰ƒ“ƒ_ƒ€‚ÅA‰B‚µiƒCƒ“ƒrƒWjƒ^ƒCƒ‹‚ğŒˆ‚ß‚ÄAÁ‚·i‰B‚·j
+//å…¨ã‚¿ã‚¤ãƒ«ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã§ã€éš ã—ï¼ˆã‚¤ãƒ³ãƒ“ã‚¸ï¼‰ã‚¿ã‚¤ãƒ«ã‚’æ±ºã‚ã¦ã€æ¶ˆã™ï¼ˆéš ã™ï¼‰
 var
   luckey: Integer;
 begin
 
-  // ‚Ç‚Ìƒ^ƒCƒ‹‚ğÁ‚·‚©’Š‘I
+  // ã©ã®ã‚¿ã‚¤ãƒ«ã‚’æ¶ˆã™ã‹æŠ½é¸
   Randomize;
   luckey := Random(iNumOfBtn) + 1;
 
-  // ƒ{ƒ^ƒ“‰B‚µ
+  // ãƒœã‚¿ãƒ³éš ã—
   btnInvisibleTile := FindTagBtn(luckey);
   if btnInvisibleTile is TButton then
   begin
@@ -525,26 +530,26 @@ begin
   end
   else
   begin
-    ShowMessage('ƒGƒ‰[‹ó‚«ƒ^ƒCƒ‹‚ğİ’è‚Å‚«‚Ü‚¹‚ñBƒAƒvƒŠ‚ğÄ‹N“®‚µ‚Ä‚­‚¾‚³‚¢');
+    ShowMessage('ã‚¨ãƒ©ãƒ¼ç©ºãã‚¿ã‚¤ãƒ«ã‚’è¨­å®šã§ãã¾ã›ã‚“ã€‚ã‚¢ãƒ—ãƒªã‚’å†èµ·å‹•ã—ã¦ãã ã•ã„');
   end;
 end;
 
 procedure TForm1.SetNewGame;
 begin
-  // V‚µ‚¢ƒQ[ƒ€‚Ìˆ—ˆê®
-  SetInitTilePos; // ƒ^ƒCƒ‹‚È‚ç‚×
-  SetInvisibleTile; // ‹ó‚«ƒ^ƒCƒ‹İ’è
-  ShuffleTiles; // ƒ^ƒCƒ‹ƒVƒƒƒbƒtƒ‹
-  FComp := False; // I—¹ƒtƒ‰ƒO‰Šú‰»
+  // æ–°ã—ã„ã‚²ãƒ¼ãƒ ã®å‡¦ç†ä¸€å¼
+  SetInitTilePos; // ã‚¿ã‚¤ãƒ«ãªã‚‰ã¹
+  SetInvisibleTile; // ç©ºãã‚¿ã‚¤ãƒ«è¨­å®š
+  ShuffleTiles; // ã‚¿ã‚¤ãƒ«ã‚·ãƒ£ãƒƒãƒ•ãƒ«
+  FComp := False; // çµ‚äº†ãƒ•ãƒ©ã‚°åˆæœŸåŒ–
   GlowEffectNewGame.Enabled := False;
-  // ƒ^ƒCƒ‹s‚«–îˆó‚Ì—LŒø
+  // ã‚¿ã‚¤ãƒ«è¡ŒãçŸ¢å°ã®æœ‰åŠ¹
   Tile.Enabled := True;
   btnGotoTile.Enabled := True;
-  // ƒ^ƒCƒ‹‚ÌƒsƒJƒsƒJ‚Æ‚ß‚é
+  // ã‚¿ã‚¤ãƒ«ã®ãƒ”ã‚«ãƒ”ã‚«ã¨ã‚ã‚‹
   if FloatAnimationTileGrow.Running then
     FloatAnimationTileGrow.Stop;
   GlowEffectTile.Enabled := False;
-  // İ’ès‚«–îˆóƒsƒJƒsƒJ~‚ß‚é
+  // è¨­å®šè¡ŒãçŸ¢å°ãƒ”ã‚«ãƒ”ã‚«æ­¢ã‚ã‚‹
   if FloatAnimationGotoSetting.Running then
     FloatAnimationGotoSetting.Stop;
   GlowEffectGotoSetting.Enabled := False;
@@ -553,7 +558,7 @@ end;
 
 procedure TForm1.SetTileRect;
 begin
-  // ƒ^ƒCƒ‹‚Ì•\¦•û–@Fiti³•ûŒ`j‚©Client ‚©İ’è
+  // ã‚¿ã‚¤ãƒ«ã®è¡¨ç¤ºæ–¹æ³•Fitï¼ˆæ­£æ–¹å½¢ï¼‰ã‹Client ã‹è¨­å®š
   if cbTileRect.ItemIndex = 1 then
   begin
     ScaledLayout1.Align := TAlignLayout.Fit;
@@ -568,7 +573,7 @@ begin
 end;
 
 procedure TForm1.ShuffleTiles;
-//‰Šúƒ^ƒCƒ‹ˆÊ’u‚Ì•À‚×‘Ö‚¦
+//åˆæœŸã‚¿ã‚¤ãƒ«ä½ç½®ã®ä¸¦ã¹æ›¿ãˆ
 var
   iLoop: Integer;
   iloopHigh: Integer;
@@ -579,62 +584,62 @@ var
   I: Integer;
   Flg: Boolean;
 begin
-  // ƒCƒ“ƒrƒWƒuƒ‹ƒ^ƒCƒ‹‚ğƒ‰ƒ“ƒ_ƒ€‚É“®‚©‚µ‚Äƒ^ƒCƒ‹‚ğƒVƒƒƒbƒtƒ‹‚·‚é]
-  iloopHigh := 2000; // ƒCƒ“ƒrƒWƒuƒ‹ƒ^ƒCƒ‹‚ğ“®‚©‚·‰ñ”
+  // ã‚¤ãƒ³ãƒ“ã‚¸ãƒ–ãƒ«ã‚¿ã‚¤ãƒ«ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«å‹•ã‹ã—ã¦ã‚¿ã‚¤ãƒ«ã‚’ã‚·ãƒ£ãƒƒãƒ•ãƒ«ã™ã‚‹]
+  iloopHigh := 2000; // ã‚¤ãƒ³ãƒ“ã‚¸ãƒ–ãƒ«ã‚¿ã‚¤ãƒ«ã‚’å‹•ã‹ã™å›æ•°
   iLoop := 0;
-  // ˆê—ñ‚Ì”
+  // ä¸€åˆ—ã®æ•°
   iLine := round(sqrt(iNumOfBtn));
   Randomize;
   while iLoop < iloopHigh do
   begin
     Flg := False;
-    // ƒ‰ƒ“ƒ_ƒ€‚É•ûŒüŒˆ‚ß‚Ä
+    // ãƒ©ãƒ³ãƒ€ãƒ ã«æ–¹å‘æ±ºã‚ã¦
     iWay := Random(4);
-    // “¯‚¶•ûŒü‚É‰½‰ñ“®‚©‚·‚©Œˆ‚ß‚é
+    // åŒã˜æ–¹å‘ã«ä½•å›å‹•ã‹ã™ã‹æ±ºã‚ã‚‹
     iRep := Random(iLine - 1) + 1;
     for I := 0 to iRep do
     begin
-      // ©•ª‚ÌˆÊ’u‚ğƒ`ƒFƒbƒN
+      // è‡ªåˆ†ã®ä½ç½®ã‚’ãƒã‚§ãƒƒã‚¯
       myPos := GetTilePosition(btnInvisibleTile.tag);
 
       case iWay of
-        0: // ã‚É
+        0: // ä¸Šã«
           begin
-            if myPos.Y > 0 then // Åã’i‚Å‚È‚¯‚ê‚Î
+            if myPos.Y > 0 then // æœ€ä¸Šæ®µã§ãªã‘ã‚Œã°
             begin
-              // ©•ª‚Ìã‚Ìƒ{ƒ^ƒ“‚ğ’T‚·
+              // è‡ªåˆ†ã®ä¸Šã®ãƒœã‚¿ãƒ³ã‚’æ¢ã™
               tmpbtnMove := FindTagBtn(btnInvisibleTile.tag - iLine);
               ChangeBtnPlace(tmpbtnMove, btnInvisibleTile);
               Flg := True;
             end
           end;
-        1: // ‰º‚É
+        1: // ä¸‹ã«
           begin
-            if myPos.Y < (iLine - 1) then // Å‰º’i‚Å‚È‚¯‚ê‚Î
+            if myPos.Y < (iLine - 1) then // æœ€ä¸‹æ®µã§ãªã‘ã‚Œã°
             begin
-              // ©•ª‚Ì‰º‚Ìƒ{ƒ^ƒ“‚ğ’T‚·
+              // è‡ªåˆ†ã®ä¸‹ã®ãƒœã‚¿ãƒ³ã‚’æ¢ã™
               tmpbtnMove := FindTagBtn(btnInvisibleTile.tag + iLine);
               ChangeBtnPlace(tmpbtnMove, btnInvisibleTile);
               Flg := True;
             end;
           end;
 
-        2: // ¶‚É
+        2: // å·¦ã«
           begin
-            if myPos.X > 0 then // Å¶—ñ‚Å‚È‚¯‚ê‚Î
+            if myPos.X > 0 then // æœ€å·¦åˆ—ã§ãªã‘ã‚Œã°
             begin
-              // ©•ª‚Ì¶‚Ìƒ{ƒ^ƒ“‚ğ’T‚·
+              // è‡ªåˆ†ã®å·¦ã®ãƒœã‚¿ãƒ³ã‚’æ¢ã™
               tmpbtnMove := FindTagBtn(btnInvisibleTile.tag - 1);
               ChangeBtnPlace(tmpbtnMove, btnInvisibleTile);
               Flg := True;
             end;
           end;
 
-        3: // ‰E‚É
+        3: // å³ã«
           begin
-            if myPos.X < (iLine - 1) then // Å‰E—ñ‚Å‚È‚¯‚ê‚Î
+            if myPos.X < (iLine - 1) then // æœ€å³åˆ—ã§ãªã‘ã‚Œã°
             begin
-              // ©•ª‚Ì‰E‚Ìƒ{ƒ^ƒ“‚ğ’T‚·
+              // è‡ªåˆ†ã®å³ã®ãƒœã‚¿ãƒ³ã‚’æ¢ã™
               tmpbtnMove := FindTagBtn(btnInvisibleTile.tag + 1);
               ChangeBtnPlace(tmpbtnMove, btnInvisibleTile);
               Flg := True;
@@ -648,7 +653,7 @@ begin
 end;
 
 procedure TForm1.Switch1Switch(Sender: TObject);
-//ƒXƒCƒbƒ`‚ÌƒIƒ“ƒIƒt‚ÅƒXƒ^ƒCƒ‹ ‚Ì“K—p‚ğØ‚è‘Ö‚¦‚é
+//ã‚¹ã‚¤ãƒƒãƒã®ã‚ªãƒ³ã‚ªãƒ•ã§ã‚¹ã‚¿ã‚¤ãƒ« ã®é©ç”¨ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
 begin
   if Switch1.IsChecked then
   begin
@@ -661,25 +666,25 @@ begin
 end;
 
 procedure TForm1.TrackBar1Change(Sender: TObject);
-//ƒgƒ‰ƒbƒNƒo[‚ÌƒXƒ‰ƒCƒh‚Ì‡‚í‚¹‚Äƒ}ƒ‹ƒ`ƒrƒ…[‚Ì•‚ğ•Ï‚¦‚é
+//ãƒˆãƒ©ãƒƒã‚¯ãƒãƒ¼ã®ã‚¹ãƒ©ã‚¤ãƒ‰ã®åˆã‚ã›ã¦ãƒãƒ«ãƒãƒ“ãƒ¥ãƒ¼ã®å¹…ã‚’å¤‰ãˆã‚‹
 begin
  MultiView1.Width := 220 + TrackBar1.Value *2;
 end;
 
 procedure TForm1.btnNewGameClick(Sender: TObject);
 begin
-  ///  ƒjƒ…[ƒQ[ƒ€ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Ìˆ—
-  SetNewGame; // ƒQ[ƒ€ŠJnˆ—ˆê®‚ÌŒÄ‚Ño‚µ
+  ///  ãƒ‹ãƒ¥ãƒ¼ã‚²ãƒ¼ãƒ ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
+  SetNewGame; // ã‚²ãƒ¼ãƒ é–‹å§‹å‡¦ç†ä¸€å¼ã®å‘¼ã³å‡ºã—
   SetTileRect;
-  //ƒQ[ƒ€‰æ–Ê‚ÉƒXƒ‰ƒCƒh
+  //ã‚²ãƒ¼ãƒ ç”»é¢ã«ã‚¹ãƒ©ã‚¤ãƒ‰
   TabControlSetting.SetActiveTabWithTransition(Tile, TTabTransition.Slide,
     TTabTransitionDirection.Normal);
 end;
 
 procedure TForm1.btnPushed(btn: TButton);
-//ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«‚ÉŒÄ‚Î‚ê‚éˆ—
+//ãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã¨ãã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
 begin
-  // ‘¼ƒ{ƒ^ƒ“‚ÌƒAƒjƒ[ƒVƒ‡ƒ“Às’†‚©‚½‚µ‚©‚ß‚Ä‚©‚çˆ—ŠJn
+  // ä»–ãƒœã‚¿ãƒ³ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å®Ÿè¡Œä¸­ã‹ãŸã—ã‹ã‚ã¦ã‹ã‚‰å‡¦ç†é–‹å§‹
   if (not FlButtonAnimation.Running) and (not FComp) then
     NextPosChk(btn);
 end;
